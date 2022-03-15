@@ -1,2 +1,2 @@
-# CMSC447Project
+# CMSC 447 Project
 SafeHaven - Flood Evacuation Assistant
