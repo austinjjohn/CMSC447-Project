@@ -2,6 +2,8 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
+from django.contrib import auth
+
 
 # Create your models here.
 class EvacLocation(models.Model):
@@ -21,4 +23,7 @@ class EvacLocation(models.Model):
 
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+
+# class Volunteer(models.Model):
+#     name = models.CharField
 
