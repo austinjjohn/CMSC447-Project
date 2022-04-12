@@ -1,0 +1,16 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}SafeHaven{% endblock %}</title>
+</head>
+<body>
+  {% include 'navbar.html' %}
+  <h1 class="logotype">SafeHaven</h1>
+<main>
+  {% block content %}
+  {% endblock %}
+</main>
+</body>
+</html>
