@@ -2,14 +2,18 @@
 
 {% block title %}Login{% endblock %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
-<h2>Login/Register</h2>
-<form method="post">
+<h2>Register a New Account</h2>
+<form method="POST" class="form-group">
     {% csrf_token %}
-    <input type="text" name="name" id="session_name" placeholder="username" />
-    <input type="text" name="name" id="session_name" placeholder="password" />
-    {{ form.as_p }}
-    <button type="submit">Login</button>
+    {{form|crispy}}
+    <button type="submit" class="btn btn-success">Submit</button>
+<!--    <input type="text" name="name" id="session_name" placeholder="username" />-->
+<!--    <input type="text" name="name" id="session_name" placeholder="password" />-->
+<!--    {{ form.as_p }}-->
+<!--    <button type="submit">Login</button>-->
 </form>
 
 {% endblock %}
