@@ -15,7 +15,7 @@ def index(request):
 
 def login(response):
     if response.method == "POST":
-        form = RegisterationForm(response.POST or None)
+        form = RegisterationForm(response.POST)
         if form.is_valid():
             form.save()
         # return redirect("/listings") #UNCOMMENT WHEN WE HAVE A LISTINGS PAGE TO CONTINUE TO

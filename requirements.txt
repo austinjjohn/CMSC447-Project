@@ -1,0 +1,6 @@
+Project Requirements
+
+Required Packages:
+Django==4.0.3
+django-crispy-forms==1.14.0
+
