@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Listings{% endblock %}
+
+{% block content %}
+<h2>Listings:</h2>
+<p>All listings will eventually show up here</p>
+<!--code to print available listings goes here-->
+<h3>Create Listing:</h3>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <input type="text" name="name" id="address" placeholder="address" />
+    </div>
+    <div>
+        <input type="number" name="name" id="spaces" placeholder="spaces available">
+    </div>
+    <input type="checkbox" name="name" id="pets" placeholder="pets">
+    <label for="pets">pets</label>
+    {{ form.as_p }}
+    <div>
+        <button type="submit">Create Listing</button>
+    </div>
+</form>
+
+{% endblock %}
