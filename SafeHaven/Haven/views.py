@@ -23,7 +23,6 @@ def login(response):
         form = RegisterationForm()
     return render(response, "login.html", {"form": form})
 
-# {"form": form}
-# def login(request):
-#     template = loader.get_template("login.html")
-#     return HttpResponse(template.render({}, request))
+def listings(request):
+    template = loader.get_template("listings.html")
+    return HttpResponse(template.render({}, request))
