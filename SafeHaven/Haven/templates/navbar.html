@@ -9,4 +9,8 @@
     <span>{% if request.path == login_url %}Login{% else %}<a href="{% url 'login' %}">Login</a>{% endif %}</span>
     {% url 'listings' as listing_url %}
     <span>{% if request.path == listing_url %}Listings{% else %}<a href="{% url 'listings' %}">Listings</a>{% endif %}</span>
+    {% url 'volunteer' as volunteer_url %}
+    <span>{% if request.path == volunteer_url %}Volunteer{% else %}<a href="{% url 'volunteer' %}">Volunteer</a>{% endif %}</span>
+    {% url 'evacuee' as evacuee_url %}
+    <span>{% if request.path == evacuee_url %}Evacuee{% else %}<a href="{% url 'evacuee' %}">Evacuee</a>{% endif %}</span>
 </div>

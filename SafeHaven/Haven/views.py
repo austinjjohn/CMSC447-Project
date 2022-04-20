@@ -26,3 +26,11 @@ def login(response):
 def listings(request):
     template = loader.get_template("listings.html")
     return HttpResponse(template.render({}, request))
+
+def volunteer(request):
+    template = loader.get_template("volunteer_profile_page.html")
+    return HttpResponse(template.render({}, request))
+
+def evacuee(request):
+    template = loader.get_template("evac_profile_page.html")
+    return HttpResponse(template.render({}, request))
