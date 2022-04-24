@@ -31,6 +31,13 @@ class EvacLocation(models.Model):
     def is_full(self):
         return self.spaces <= self.reservations
 
+    @classmethod
+    def create(cls, address, pets, spaces, reservations, pub_date):
+        location = EvacLocation(address=address, pets=pets,
+                                spaces=spaces, reservations=reservations,
+                                pub_date=pub_date)
+        return location
+
 
 class Volunteer(models.Model):
     name = models.CharField(max_length=80)
