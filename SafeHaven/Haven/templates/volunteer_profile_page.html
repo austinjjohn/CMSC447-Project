@@ -78,64 +78,73 @@
 <div class="container mt-3">
     <hr class="my-4">
     <h3 class="mb-3">Geograhic Information</h3>
-    <form novalidate>
-        <div class="row g-3">
-            <div class="col-md-5">
-                <label for="country" class=""form-label">Country</label>
-                <select id="country" class="form-control">
-                    <option value="">Choose...</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Egypt">Egypt</option>
-                    <option value="France">France</option>
-                    <option value="Germany">Germany</option>
-                    <option value="Italy">Italy</option>
-                    <option value="Kuwait">Kuwait</option>
-                    <option value="United States">United States</option>
-                    <option value="Yemen">Yemen</option>
 
-                </select>
-                <div class="invalid-feedback">
-                    Valid last name is required.
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <label for="state" class=""form-label">State</label>
-                <select id="state" class="form-control">
-                    <option value="">Choose...</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Egypt">Egypt</option>
-                    <option value="France">France</option>
-                    <option value="Germany">Germany</option>
-                    <option value="Italy">Italy</option>
-                    <option value="Kuwait">Kuwait</option>
-                    <option value="United States">United States</option>
-                    <option value="Yemen">Yemen</option>
-
-                </select>
-                <div class="invalid-feedback">
-                    Valid last name is required.
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label for="zipcode" class=""form-label">Zipcode</label>
-                <input id="zipcode" type="number" class="form-control" placeholder="25565" required>
-                <div class="invalid-feedback">
-                    Valid last name is required.
-                </div>
-            </div>
-
-            <div class="col-sm-5">
-                <label for="address" class=""form-label">Address</label>
-                <input id="address" type="text" class="form-control" placeholder="1234 Main St" required>
-                <div class="invalid-feedback">
-                    Valid first name is required.
-                </div>
-            </div>
-
-        </div>
+    <h1>Create a Listing </h1>
+    <form action="listings" method="POST">
+        {% csrf_token %}
+        Address: <input type="text" name="address"/><br/>
+        Pets: <input type="checkbox" name="pets" /><br/>
+        Spaces: <input type="number" name="spaces" /><br/>
+        <input type="submit" value="Post"/>
     </form>
+<!--    <form novalidate>-->
+<!--        <div class="row g-3">-->
+<!--            <div class="col-md-5">-->
+<!--                <label for="country" class=""form-label">Country</label>-->
+<!--                <select id="country" class="form-control">-->
+<!--                    <option value="">Choose...</option>-->
+<!--                    <option value="Australia">Australia</option>-->
+<!--                    <option value="Egypt">Egypt</option>-->
+<!--                    <option value="France">France</option>-->
+<!--                    <option value="Germany">Germany</option>-->
+<!--                    <option value="Italy">Italy</option>-->
+<!--                    <option value="Kuwait">Kuwait</option>-->
+<!--                    <option value="United States">United States</option>-->
+<!--                    <option value="Yemen">Yemen</option>-->
+
+<!--                </select>-->
+<!--                <div class="invalid-feedback">-->
+<!--                    Valid last name is required.-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-md-4">-->
+<!--                <label for="state" class=""form-label">State</label>-->
+<!--                <select id="state" class="form-control">-->
+<!--                    <option value="">Choose...</option>-->
+<!--                    <option value="Australia">Australia</option>-->
+<!--                    <option value="Egypt">Egypt</option>-->
+<!--                    <option value="France">France</option>-->
+<!--                    <option value="Germany">Germany</option>-->
+<!--                    <option value="Italy">Italy</option>-->
+<!--                    <option value="Kuwait">Kuwait</option>-->
+<!--                    <option value="United States">United States</option>-->
+<!--                    <option value="Yemen">Yemen</option>-->
+
+<!--                </select>-->
+<!--                <div class="invalid-feedback">-->
+<!--                    Valid last name is required.-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-md-3">-->
+<!--                <label for="zipcode" class=""form-label">Zipcode</label>-->
+<!--                <input id="zipcode" type="number" class="form-control" placeholder="25565" required>-->
+<!--                <div class="invalid-feedback">-->
+<!--                    Valid last name is required.-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-sm-5">-->
+<!--                <label for="address" class=""form-label">Address</label>-->
+<!--                <input id="address" type="text" class="form-control" placeholder="1234 Main St" required>-->
+<!--                <div class="invalid-feedback">-->
+<!--                    Valid first name is required.-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </form>-->
 </div>
 
 <div class="container mt-3">
