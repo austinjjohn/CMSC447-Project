@@ -12,6 +12,8 @@ class LocationTest(TestCase):
 
     def test_createLocation(self):
         test = EvacLocation(address='1000 hilltop cir', pets=0, spaces=3, reservations=2, pub_date=timezone.now())
+        test.create('1000 hilltop cir', 0, 3, 2, timezone.now())
+        test.save()
         test.allows_pets()
         test.get_spaces()
         test.was_published_recently()

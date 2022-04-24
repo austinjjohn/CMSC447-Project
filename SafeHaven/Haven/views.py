@@ -17,3 +17,9 @@ def index(request):
 def login(request):
     template = loader.get_template("login.html")
     return HttpResponse(template.render({}, request))
+
+
+def listings(request):
+    template = loader.get_template("listings.html")
+    return HttpResponse(template.render({}, request))
+    # return HttpResponse("Hello, world. You're at the listings index.")

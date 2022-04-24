@@ -1,6 +1,12 @@
 <div>
+    <img class="image"
+         src="https://cdn.discordapp.com/attachments/946404952627093565/964183117151731732/safe-haven-color.png"
+         width="50"
+         height="50"/>
     {% url 'index' as index_url %}
     <span>{% if request.path == index_url %}Home{% else %}<a href="{% url 'index' %}">Home</a>{% endif %}</span>
     {% url 'login' as login_url %}
     <span>{% if request.path == login_url %}Login{% else %}<a href="{% url 'login' %}">Login</a>{% endif %}</span>
+    {% url 'listings' as listing_url %}
+    <span>{% if request.path == listing_url %}Listings{% else %}<a href="{% url 'listings' %}">Listings</a>{% endif %}</span>
 </div>
