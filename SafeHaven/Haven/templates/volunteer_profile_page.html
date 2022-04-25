@@ -83,7 +83,7 @@
     <form action="listings" method="POST">
         {% csrf_token %}
         Address: <input type="text" name="address"/><br/>
-        Pets: <input type="checkbox" name="pets" /><br/>
+        Pets: <input type="number" name="pets" /><br/>
         Spaces: <input type="number" name="spaces" /><br/>
         <input type="submit" value="Post"/>
     </form>

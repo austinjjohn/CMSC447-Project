@@ -4,10 +4,14 @@
 
 {% block content %}
 <h2>Listings:</h2>
-<p>All listings will eventually show up here</p>
-<p>Address is :{{address}}</p>
-<p>Pets :{{pets}}</p>
-<p>Spaces available :{{spaces}}</p>
+{% for listing in list_data %}
+    <div>
+        <p>Address is {{ listing.address }}
+        <p>Pets :{{ listing.pets }}
+        <p>Spaces available :{{ listing.spaces }}
+        <p>Publication date :{{ listing.pub_date }}
+    </div>
+{% endfor %}
 <!--code to print available listings goes here-->
 <!--<h3>Create Listing:</h3>-->
 <!--<form method="post">-->

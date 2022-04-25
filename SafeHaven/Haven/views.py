@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
 from .forms import RegisterationForm
-from .models import EvacLocation
+from Haven.models import EvacLocation
 
 #from .models import Evacuee, Volunteer, EvacLocation
 
@@ -25,24 +25,25 @@ def login(response):
     return render(response, "login.html", {"form": form})
 
 def listings(request):
-    # template = loader.get_template("listings.html")
-    # return HttpResponse(template.render({}, request))
+    #data is all evacLocations
+    data = EvacLocation.objects.all()
+    #creates dict to pass all the evacLocation instances
+    info = {
+        "list_data": data
+    }
+    #if a new location is being made from volunteer index
     if request.method == 'POST':
         if request.POST.get('address') and request.POST.get('spaces'):
             address = request.POST["address"]
             pets = request.POST["pets"]
             spaces = request.POST["spaces"]
-            dict = {
-                'address': address,
-                'pets': pets,
-                'spaces': spaces
-            }
-            location = EvacLocation.create(address, pets, spaces,)
-            location.save()
-            return render(request, 'listings.html', dict)
 
-    else:
-        return render(request, 'listings.html', dict)
+            #create the new location
+            location = EvacLocation.create(address, pets, spaces)
+            location.save()
+
+    #render the listings page with the info dict passed in
+    return render(request, 'listings.html', info)
 
 def volunteer(request):
     template = loader.get_template("volunteer_profile_page.html")
