@@ -37,8 +37,8 @@ def listings(request):
                 'pets': pets,
                 'spaces': spaces
             }
-            # location = EvacLocation.create(address, pets, spaces)
-            # location.save()
+            location = EvacLocation.create(address, pets, spaces,)
+            location.save()
             return render(request, 'listings.html', dict)
 
     else:
