@@ -11,8 +11,10 @@ from django.forms.models import model_to_dict
 class EvacLocation(models.Model):
     #Each evac location has these variables
     address = models.CharField(max_length=200)
-    pets = models.BooleanField(default=False)
+    # pets = models.BooleanField(default=False)
+    pets = models.IntegerField(default=0) #converts to bool in views.py
     spaces = models.IntegerField(default=1)
+    username = models.CharField(max_length=200)
     reservations = models.IntegerField(default=0)
     pub_date = models.DateTimeField('date published')
 
@@ -30,6 +32,17 @@ class EvacLocation(models.Model):
 
     def is_full(self):
         return self.spaces <= self.reservations
+
+    @classmethod
+    def create(cls, address, pets, spaces, username):
+        location = EvacLocation(address=address, pets=pets,
+                                spaces=spaces, username=username,reservations=0,
+                                pub_date=timezone.now())
+        return location
+
+    @classmethod
+    def delete(cls):
+        cls.delete()
 
 
 class Volunteer(models.Model):

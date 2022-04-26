@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
 from .forms import RegisterationForm
+from Haven.models import EvacLocation
 
 #from .models import Evacuee, Volunteer, EvacLocation
 
@@ -23,7 +24,48 @@ def login(response):
         form = RegisterationForm()
     return render(response, "login.html", {"form": form})
 
-# {"form": form}
-# def login(request):
-#     template = loader.get_template("login.html")
-#     return HttpResponse(template.render({}, request))
+def listings(request):
+    #data is all evacLocations
+    data = EvacLocation.objects.all()
+    #creates dict to pass all the evacLocation instances
+    info = {
+        "list_data": data
+    }
+    #if a new location is being made from volunteer index
+    if request.method == 'POST':
+        if request.POST.get('address') and request.POST.get('spaces') and request.POST.get('username'):
+            address = request.POST["address"]
+            pets = request.POST["pets"]
+            spaces = request.POST["spaces"]
+            username = request.POST["username"]
+
+            #create the new location
+            location = EvacLocation.create(address, pets, spaces, username)
+            location.save()
+
+    #render the listings page with the info dict passed in
+    return render(request, 'listings.html', info)
+
+def volunteer(request):
+    template = loader.get_template("volunteer_profile_page.html")
+    return HttpResponse(template.render({}, request))
+
+def evacuee(request):
+    template = loader.get_template("evac_profile_page.html")
+    return HttpResponse(template.render({}, request))
+
+# def createListing(request):
+#     if request.method == 'POST':
+#         if request.POST.get('address') and request.POST.get('spaces'):
+#             address = request.POST["address"]
+#             pets = request.POST["pets"]
+#             spaces = request.POST["spaces"]
+#             dict = {
+#                 'address': address,
+#                 'pets': pets,
+#                 'spaces': spaces
+#             }
+#             return render(request, 'templates/listings.html', dict)
+#
+#     else:
+#         return render(request, 'templates/listings.html', dict)
