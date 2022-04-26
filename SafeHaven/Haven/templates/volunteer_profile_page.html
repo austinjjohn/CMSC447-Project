@@ -82,10 +82,12 @@
     <h1>Create a Listing </h1>
     <form action="listings" method="POST">
         {% csrf_token %}
-        Address: <input type="text" name="address"/><br/>
-        Pets: <input type="number" name="pets" /><br/>
-        Spaces: <input type="number" name="spaces" /><br/>
-        <input type="submit" value="Post"/>
+        Address of Listing: <input type="text" name="address"/><br/>
+        How many Pets Allowed: <input type="number" name="pets" /><br/>
+        How many People can this space host: <input type="number" name="spaces" /><br/>
+        Username of your account: <input type="text" name="username" /><br/>
+        <!--<input type="submit" value="Post"/>-->
+        <button type="submit" class="btn btn-primary btn-lg btn-block">List your location as a Safe Space</button>
     </form>
 <!--    <form novalidate>-->
 <!--        <div class="row g-3">-->

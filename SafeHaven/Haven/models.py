@@ -14,6 +14,7 @@ class EvacLocation(models.Model):
     # pets = models.BooleanField(default=False)
     pets = models.IntegerField(default=0) #converts to bool in views.py
     spaces = models.IntegerField(default=1)
+    username = models.CharField(max_length=200)
     reservations = models.IntegerField(default=0)
     pub_date = models.DateTimeField('date published')
 
@@ -33,9 +34,9 @@ class EvacLocation(models.Model):
         return self.spaces <= self.reservations
 
     @classmethod
-    def create(cls, address, pets, spaces):
+    def create(cls, address, pets, spaces, username):
         location = EvacLocation(address=address, pets=pets,
-                                spaces=spaces, reservations=0,
+                                spaces=spaces, username=username,reservations=0,
                                 pub_date=timezone.now())
         return location
 

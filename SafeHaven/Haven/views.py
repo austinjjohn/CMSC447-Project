@@ -33,13 +33,14 @@ def listings(request):
     }
     #if a new location is being made from volunteer index
     if request.method == 'POST':
-        if request.POST.get('address') and request.POST.get('spaces'):
+        if request.POST.get('address') and request.POST.get('spaces') and request.POST.get('username'):
             address = request.POST["address"]
             pets = request.POST["pets"]
             spaces = request.POST["spaces"]
+            username = request.POST["username"]
 
             #create the new location
-            location = EvacLocation.create(address, pets, spaces)
+            location = EvacLocation.create(address, pets, spaces, username)
             location.save()
 
     #render the listings page with the info dict passed in
