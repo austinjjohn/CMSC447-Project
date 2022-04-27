@@ -27,3 +27,7 @@ def login(response):
 # def login(request):
 #     template = loader.get_template("login.html")
 #     return HttpResponse(template.render({}, request))
+
+def index(request):
+    mapbox_access_token = 'pk.eyJ1Ijoiam1pMSIsImEiOiJjbDJndjV0b2kwN245M2tteHN3NTcwaXNpIn0.pOCxELPUcT3JC9rXzhL07Q'
+    return render(request, 'map.html', {'mapbox_access_token': mapbox_access_token})
