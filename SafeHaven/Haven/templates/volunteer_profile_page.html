@@ -11,6 +11,7 @@
     <title>SafeHaven Website</title>
 </head>
 <body class="bg-light">
+
 {% include 'navbar.html' %}
 <div class="container">
     <div class="py-5 text-center">
@@ -18,6 +19,12 @@
         <img class="mb-2 d-block mx-auto"
              src="https://cdn.discordapp.com/attachments/946404952627093565/964183117151731732/safe-haven-color.png"
              alt="SaveHaven Logo" width="200" height="200"/>
+
+<div class="container">
+    <div class="py-5 text-center">
+        <h1>SafeHaven</h1>
+        <img class="mb-2 d-block mx-auto" src="safe-haven-color.png" alt="SaveHaven Logo" width="200" height="200"/>
+
         <h2>Volunteer Profile</h2>
         <p class="lead">Please fill in your personal information below</p>
     </div>
@@ -97,6 +104,73 @@
         <!--<input type="submit" value="Post"/>-->
         <br>
         <h5>Pets Restrictions</h5>
+    <h3 class="mb-3">Geograhic Information</h3>
+    <form novalidate>
+        <div class="row g-3">
+            <div class="col-md-5">
+                <label for="country" class=""form-label">Country</label>
+                <select id="country" class="form-control">
+                    <option value="">Choose...</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Kuwait">Kuwait</option>
+                    <option value="United States">United States</option>
+                    <option value="Yemen">Yemen</option>
+
+                </select>
+                <div class="invalid-feedback">
+                    Valid last name is required.
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="state" class=""form-label">State</label>
+                <select id="state" class="form-control">
+                    <option value="">Choose...</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Kuwait">Kuwait</option>
+                    <option value="United States">United States</option>
+                    <option value="Yemen">Yemen</option>
+
+                </select>
+                <div class="invalid-feedback">
+                    Valid last name is required.
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <label for="zipcode" class=""form-label">Zipcode</label>
+                <input id="zipcode" type="number" class="form-control" placeholder="25565" required>
+                <div class="invalid-feedback">
+                    Valid last name is required.
+                </div>
+            </div>
+
+            <div class="col-sm-5">
+                <label for="address" class=""form-label">Address</label>
+                <input id="address" type="text" class="form-control" placeholder="1234 Main St" required>
+                <div class="invalid-feedback">
+                    Valid first name is required.
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<div class="container mt-3">
+    <hr class="my-4">
+    <h3 class="mb-3">Volunteered Space Restrictions</h3>
+    <form novalidate>
+        <div class="row g-3">
+            <h5>Pets</h5>
             <div class="col-12">
                 <div class="form-check">
                     <input id="dog" type="checkbox" class="form-check-input">
@@ -118,6 +192,8 @@
             </div>
             <br>
             <h5>Kids and Babies Restrictions</h5>
+
+            <h5>Kids and Babies</h5>
             <div class="col-12">
                 <div class="form-check">
                     <input id="baby" type="checkbox" class="form-check-input">
@@ -128,8 +204,25 @@
                     <input id="kid" type="checkbox" class="form-check-input">
                     <label class="form-check-label" for="kid">Will NOT accept an evacuation party containing a kid(s) below 13 years old</label>
                 </div>
+
         <br>
         <button type="submit" class="btn btn-primary btn-block">List your location as a Safe Space</button>
+
+
+            </div>
+            <h5>Entire Party</h5>
+            <div class="col-sm-5">
+                <label for="partyCount" class=""form-label">Number of people you're accepting from an evacuation party (including kids and babies)</label>
+                <input id="partyCount" type="number" class="form-control" placeholder="5" required>
+                <div class="invalid-feedback">
+                    Valid first name is required.
+                </div>
+            </div>
+        </div>
+        <hr class="my-4">
+
+        <button class="btn btn-primary btn-lg btn-block">List your location as a Safe Space</button>
+
     </form>
 </div>
 

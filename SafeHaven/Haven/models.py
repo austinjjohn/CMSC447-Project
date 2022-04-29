@@ -4,14 +4,13 @@ from django.db import models
 from django.utils import timezone
 from django.contrib import auth
 from django.forms.models import model_to_dict
-from django import forms
 
+from django import forms
 
 # Create your models here.
 
 
 class EvacLocation(models.Model):
-    # Each evac location has these variables
     address = models.CharField(max_length=200)
     # pets = models.BooleanField(default=False)
     pets = models.CharField(max_length=50)  # converts to bool in views.py
