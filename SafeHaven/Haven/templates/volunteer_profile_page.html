@@ -12,10 +12,19 @@
 </head>
 <body class="bg-light">
 
+{% include 'navbar.html' %}
+<div class="container">
+    <div class="py-5 text-center">
+        <h1>SafeHaven</h1>
+        <img class="mb-2 d-block mx-auto"
+             src="https://cdn.discordapp.com/attachments/946404952627093565/964183117151731732/safe-haven-color.png"
+             alt="SaveHaven Logo" width="200" height="200"/>
+
 <div class="container">
     <div class="py-5 text-center">
         <h1>SafeHaven</h1>
         <img class="mb-2 d-block mx-auto" src="safe-haven-color.png" alt="SaveHaven Logo" width="200" height="200"/>
+
         <h2>Volunteer Profile</h2>
         <p class="lead">Please fill in your personal information below</p>
     </div>
@@ -75,6 +84,26 @@
 
 <div class="container mt-3">
     <hr class="my-4">
+    <h3>Create a Listing </h3>
+    <form action="listings" method="POST" style='margin: 0; padding: 0;'>
+        {% csrf_token %}
+        <br>
+        <h5>General Listing Information</h5>
+        <div class="col-12">
+            Address of Listing: <input type="text" name="address" placeholder="1234 Main St"/><br/>
+        </div>
+        <div class="col-12">
+            How many Pets Allowed: <input type="number" name="pets" placeholder="2"/><br/>
+        </div>
+        <div class="col-12">
+            How many People can this space host: <input type="number" name="spaces" placeholder="8"/><br/>
+        </div>
+        <div class="col-12">
+            Username of your account: <input type="text" name="username" placeholder="jsmith"/><br/>
+        </div>
+        <!--<input type="submit" value="Post"/>-->
+        <br>
+        <h5>Pets Restrictions</h5>
     <h3 class="mb-3">Geograhic Information</h3>
     <form novalidate>
         <div class="row g-3">
@@ -161,6 +190,9 @@
                 </div>
 
             </div>
+            <br>
+            <h5>Kids and Babies Restrictions</h5>
+
             <h5>Kids and Babies</h5>
             <div class="col-12">
                 <div class="form-check">
@@ -172,6 +204,10 @@
                     <input id="kid" type="checkbox" class="form-check-input">
                     <label class="form-check-label" for="kid">Will NOT accept an evacuation party containing a kid(s) below 13 years old</label>
                 </div>
+
+        <br>
+        <button type="submit" class="btn btn-primary btn-block">List your location as a Safe Space</button>
+
 
             </div>
             <h5>Entire Party</h5>
