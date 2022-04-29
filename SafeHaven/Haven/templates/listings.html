@@ -6,28 +6,15 @@
 <h2>Listings:</h2>
 {% for listing in list_data %}
     <div>
-        <p>Address is {{ listing.address }}
-        <p>Pets :{{ listing.pets }}
-        <p>Spaces available :{{ listing.spaces }}
-        <p>Publication date :{{ listing.pub_date }}
+        <br>
+        Address is {{ listing.address }}
+        Pets :{{ listing.pets }}
+        Spaces available :{{ listing.spaces }}
+        Account hosting Safe Space:{{ listing.username }}
+        Publication date :{{ listing.pub_date }}
+        <!-- WILL HAVE evac button bring to this page-->
+        <!-- WILL HAVE reserve listing pull from users database-->
     </div>
 {% endfor %}
-<!--code to print available listings goes here-->
-<!--<h3>Create Listing:</h3>-->
-<!--<form method="post">-->
-<!--    {% csrf_token %}-->
-<!--    <div>-->
-<!--        <input type="text" name="name" id="address" placeholder="address" />-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <input type="number" name="name" id="spaces" placeholder="spaces available">-->
-<!--    </div>-->
-<!--    <input type="checkbox" name="name" id="pets" placeholder="pets">-->
-<!--    <label for="pets">pets</label>-->
-<!--    {{ form.as_p }}-->
-<!--    <div>-->
-<!--        <button type="submit">Create Listing</button>-->
-<!--    </div>-->
-<!--</form>-->
 
 {% endblock %}
