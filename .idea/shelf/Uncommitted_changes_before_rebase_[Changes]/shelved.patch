@@ -1,0 +1,164 @@
+Index: SafeHaven/Haven/templates/listings.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{% extends 'base.html' %}\r\n\r\n{% block title %}Listings{% endblock %}\r\n\r\n{% block content %}\r\n<h2>Listings:</h2>\r\n{% for listing in list_data %}\r\n    <div>\r\n        <br>\r\n        Address is {{ listing.address }}\r\n        Pets :{{ listing.pets }}\r\n        Spaces available :{{ listing.spaces }}\r\n        Account hosting Safe Space:{{ listing.username }}\r\n        Publication date :{{ listing.pub_date }}\r\n        <!-- WILL HAVE evac button bring to this page-->\r\n        <!-- WILL HAVE reserve listing pull from users database-->\r\n    </div>\r\n{% endfor %}\r\n\r\n{% endblock %}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SafeHaven/Haven/templates/listings.html b/SafeHaven/Haven/templates/listings.html
+--- a/SafeHaven/Haven/templates/listings.html	(revision 6643bcecf86b403410e5a28119ae13b16eb8a3d6)
++++ b/SafeHaven/Haven/templates/listings.html	(date 1651025584530)
+@@ -8,10 +8,9 @@
+     <div>
+         <br>
+         Address is {{ listing.address }}
+-        Pets :{{ listing.pets }}
+-        Spaces available :{{ listing.spaces }}
+-        Account hosting Safe Space:{{ listing.username }}
+-        Publication date :{{ listing.pub_date }}
++
++        Spaces available {{ listing.spaces }}
++        Publication date {{ listing.pub_date }}
+         <!-- WILL HAVE evac button bring to this page-->
+         <!-- WILL HAVE reserve listing pull from users database-->
+     </div>
+Index: SafeHaven/Haven/templates/volunteer_profile_page.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!doctype html>\r\n<html lang=\"en\">\r\n<head>\r\n    <!-- Required meta tags -->\r\n    <meta charset=\"utf-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n\r\n    <!-- Bootstrap CSS -->\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">\r\n\r\n    <title>SafeHaven Website</title>Z\r\n</head>\r\n<body class=\"bg-light\">\r\n{% include 'navbar.html' %}\r\n<div class=\"container\">\r\n    <div class=\"py-5 text-center\">\r\n        <h1>SafeHaven</h1>\r\n        <img class=\"mb-2 d-block mx-auto\"\r\n             src=\"https://cdn.discordapp.com/attachments/946404952627093565/964183117151731732/safe-haven-color.png\"\r\n             alt=\"SaveHaven Logo\" width=\"200\" height=\"200\"/>\r\n        <h2>Volunteer Profile</h2>\r\n        <p class=\"lead\">Please fill in your personal information below</p>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n    <h3 class=\"mb-3\">Primary User Information</h3>\r\n    <form novalidate>\r\n        <div class=\"row g-3\">\r\n            <div class=\"col-sm-6\">\r\n                <label for=\"firstName\" class=\"\"form-label\">First Name</label>\r\n                <input id=\"firstName\" type=\"text\" class=\"form-control\" placeholder=\"John\" required>\r\n                <div class=\"invalid-feedback\">\r\n                    Valid first name is required.\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-sm-6\">\r\n                <label for=\"lastName\" class=\"\"form-label\">Last Name</label>\r\n                <input id=\"lastName\" type=\"text\" class=\"form-control\" placeholder=\"Smith\" required>\r\n                <div class=\"invalid-feedback\">\r\n                    Valid last name is required.\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-6\">\r\n                <label for=\"username\" class=\"\"form-label\">Username</label>\r\n                <div class=\"input-group\">\r\n                    <span class=\"input-group-text\">@</span>\r\n                    <input id=\"username\" type=\"text\" class=\"form-control\" placeholder=\"jsmith\" required>\r\n                </div>\r\n                <div class=\"invalid-feedback\">\r\n                    Valid last name is required.\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-6\">\r\n                <label for=\"password\" class=\"\"form-label\">Password</label>\r\n                <input id=\"password\" type=\"text\" class=\"form-control\" placeholder=\"super_secret_password\" required>\r\n                <div class=\"invalid-feedback\">\r\n                    Valid password is required.\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-6\">\r\n                <label for=\"email\" class=\"\"form-label\">Email</label>\r\n                <input id=\"email\" type=\"text\" class=\"form-control\" placeholder=\"benJ@gmail.com\" required>\r\n                <div class=\"invalid-feedback\">\r\n                    Valid email is required.\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n    </form>\r\n\r\n</div>\r\n\r\n<div class=\"container mt-3\">\r\n    <hr class=\"my-4\">\r\n    <h3>Create a Listing </h3>\r\n    <form action=\"listings\" method=\"POST\" style='margin: 0; padding: 0;'>\r\n        {% csrf_token %}\r\n        <br>\r\n        <h5>General Listing Information</h5>\r\n        <div class=\"col-12\">\r\n            Address of Listing: <input type=\"text\" name=\"address\" placeholder=\"1234 Main St\"/><br/>\r\n        </div>\r\n        <div class=\"col-12\">\r\n            How many Pets Allowed: <input type=\"number\" name=\"pets\" placeholder=\"2\"/><br/>\r\n        </div>\r\n        <div class=\"col-12\">\r\n            How many People can this space host: <input type=\"number\" name=\"spaces\" placeholder=\"8\"/><br/>\r\n        </div>\r\n        <div class=\"col-12\">\r\n            Username of your account: <input type=\"text\" name=\"username\" placeholder=\"jmiu1\"/><br/>\r\n        </div>\r\n        <!--<input type=\"submit\" value=\"Post\"/>-->\r\n        <br>\r\n        <h5>Pets Restrictions</h5>\r\n            <div class=\"col-12\">\r\n                <div class=\"form-check\">\r\n                    <input id=\"dog\" type=\"checkbox\" class=\"form-check-input\">\r\n                    <label class=\"form-check-label\" for=\"dog\">Will NOT accept an evacuation party containing a dog(s)</label>\r\n                </div>\r\n                <div class=\"form-check\">\r\n                    <input id=\"cat\" type=\"checkbox\" class=\"form-check-input\">\r\n                    <label class=\"form-check-label\" for=\"cat\">Will NOT accept an evacuation party containing a cat(s)</label>\r\n                </div>\r\n                <div class=\"form-check\">\r\n                    <input id=\"fish\" type=\"checkbox\" class=\"form-check-input\">\r\n                    <label class=\"form-check-label\" for=\"fish\">Will NOT accept an evacuation party containing a fish(s)</label>\r\n                </div>\r\n                <div class=\"form-check\">\r\n                    <input id=\"bird\" type=\"checkbox\" class=\"form-check-input\">\r\n                    <label class=\"form-check-label\" for=\"bird\">Will NOT accept an evacuation party containing a bird(s)</label>\r\n                </div>\r\n\r\n            </div>\r\n            <br>\r\n            <h5>Kids and Babies Restrictions</h5>\r\n            <div class=\"col-12\">\r\n                <div class=\"form-check\">\r\n                    <input id=\"baby\" type=\"checkbox\" class=\"form-check-input\">\r\n                    <label class=\"form-check-label\" for=\"baby\">Will NOT accept an evacuation party containing a baby(s)</label>\r\n                </div>\r\n\r\n                <div class=\"form-check\">\r\n                    <input id=\"kid\" type=\"checkbox\" class=\"form-check-input\">\r\n                    <label class=\"form-check-label\" for=\"kid\">Will NOT accept an evacuation party containing a kid(s) below 13 years old</label>\r\n                </div>\r\n        <br>\r\n        <button type=\"submit\" class=\"btn btn-primary btn-block\">List your location as a Safe Space</button>\r\n    </form>\r\n</div>\r\n\r\n<p>\r\n    <br>\r\n    <br>\r\n    <br>\r\n</p>\r\n\r\n\r\n<!-- Optional JavaScript; choose one of the two! -->\r\n\r\n<!-- Option 1: Bootstrap Bundle with Popper -->\r\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p\" crossorigin=\"anonymous\"></script>\r\n\r\n<!-- Option 2: Separate Popper and Bootstrap JS -->\r\n<!--\r\n<script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js\" integrity=\"sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB\" crossorigin=\"anonymous\"></script>\r\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js\" integrity=\"sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13\" crossorigin=\"anonymous\"></script>\r\n-->\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SafeHaven/Haven/templates/volunteer_profile_page.html b/SafeHaven/Haven/templates/volunteer_profile_page.html
+--- a/SafeHaven/Haven/templates/volunteer_profile_page.html	(revision 6643bcecf86b403410e5a28119ae13b16eb8a3d6)
++++ b/SafeHaven/Haven/templates/volunteer_profile_page.html	(date 1651025661366)
+@@ -82,19 +82,14 @@
+         {% csrf_token %}
+         <br>
+         <h5>General Listing Information</h5>
+-        <div class="col-12">
++
+             Address of Listing: <input type="text" name="address" placeholder="1234 Main St"/><br/>
+-        </div>
+-        <div class="col-12">
++
+             How many Pets Allowed: <input type="number" name="pets" placeholder="2"/><br/>
+-        </div>
+-        <div class="col-12">
++
+             How many People can this space host: <input type="number" name="spaces" placeholder="8"/><br/>
+-        </div>
+-        <div class="col-12">
+-            Username of your account: <input type="text" name="username" placeholder="jmiu1"/><br/>
+-        </div>
+-        <!--<input type="submit" value="Post"/>-->
++
++        <input type="submit" value="Post"/>
+         <br>
+         <h5>Pets Restrictions</h5>
+             <div class="col-12">
+@@ -128,8 +123,8 @@
+                     <input id="kid" type="checkbox" class="form-check-input">
+                     <label class="form-check-label" for="kid">Will NOT accept an evacuation party containing a kid(s) below 13 years old</label>
+                 </div>
++            </div>
+         <br>
+-        <button type="submit" class="btn btn-primary btn-block">List your location as a Safe Space</button>
+     </form>
+ </div>
+ 
+Index: .idea/CMSC447-Project.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"PYTHON_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\">\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <excludeFolder url=\"file://$MODULE_DIR$/venv\" />\r\n    </content>\r\n    <orderEntry type=\"jdk\" jdkName=\"Python 3.9 (CMSC447-Project)\" jdkType=\"Python SDK\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/CMSC447-Project.iml b/.idea/CMSC447-Project.iml
+--- a/.idea/CMSC447-Project.iml	(revision 6643bcecf86b403410e5a28119ae13b16eb8a3d6)
++++ b/.idea/CMSC447-Project.iml	(date 1650338715550)
+@@ -4,7 +4,7 @@
+     <content url="file://$MODULE_DIR$">
+       <excludeFolder url="file://$MODULE_DIR$/venv" />
+     </content>
+-    <orderEntry type="jdk" jdkName="Python 3.9 (CMSC447-Project)" jdkType="Python SDK" />
++    <orderEntry type="jdk" jdkName="Python 3.10 (CMSC447-Project) (5)" jdkType="Python SDK" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: SafeHaven/Haven/views.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from django.http import HttpResponse\r\nfrom django.shortcuts import render, redirect\r\nfrom django.template import loader\r\nfrom .forms import RegisterationForm\r\nfrom Haven.models import EvacLocation\r\n\r\n#from .models import Evacuee, Volunteer, EvacLocation\r\n\r\n# Create your views here.\r\n\r\n\r\ndef index(request):\r\n    template = loader.get_template(\"base.html\")\r\n    return HttpResponse(template.render({}, request))\r\n    #return HttpResponse(\"Hello, world. You're at the Haven index.\")\r\n\r\ndef login(response):\r\n    if response.method == \"POST\":\r\n        form = RegisterationForm(response.POST)\r\n        if form.is_valid():\r\n            form.save()\r\n        # return redirect(\"/listings\") #UNCOMMENT WHEN WE HAVE A LISTINGS PAGE TO CONTINUE TO\r\n    else:\r\n        form = RegisterationForm()\r\n    return render(response, \"login.html\", {\"form\": form})\r\n\r\ndef listings(request):\r\n    #data is all evacLocations\r\n    data = EvacLocation.objects.all()\r\n    #creates dict to pass all the evacLocation instances\r\n    info = {\r\n        \"list_data\": data\r\n    }\r\n    #if a new location is being made from volunteer index\r\n    if request.method == 'POST':\r\n        if request.POST.get('address') and request.POST.get('spaces') and request.POST.get('username'):\r\n            address = request.POST[\"address\"]\r\n            pets = request.POST[\"pets\"]\r\n            spaces = request.POST[\"spaces\"]\r\n            username = request.POST[\"username\"]\r\n\r\n            #create the new location\r\n            location = EvacLocation.create(address, pets, spaces, username)\r\n            location.save()\r\n\r\n    #render the listings page with the info dict passed in\r\n    return render(request, 'listings.html', info)\r\n\r\ndef volunteer(request):\r\n    template = loader.get_template(\"volunteer_profile_page.html\")\r\n    return HttpResponse(template.render({}, request))\r\n\r\ndef evacuee(request):\r\n    template = loader.get_template(\"evac_profile_page.html\")\r\n    return HttpResponse(template.render({}, request))\r\n\r\n# def createListing(request):\r\n#     if request.method == 'POST':\r\n#         if request.POST.get('address') and request.POST.get('spaces'):\r\n#             address = request.POST[\"address\"]\r\n#             pets = request.POST[\"pets\"]\r\n#             spaces = request.POST[\"spaces\"]\r\n#             dict = {\r\n#                 'address': address,\r\n#                 'pets': pets,\r\n#                 'spaces': spaces\r\n#             }\r\n#             return render(request, 'templates/listings.html', dict)\r\n#\r\n#     else:\r\n#         return render(request, 'templates/listings.html', dict)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SafeHaven/Haven/views.py b/SafeHaven/Haven/views.py
+--- a/SafeHaven/Haven/views.py	(revision 6643bcecf86b403410e5a28119ae13b16eb8a3d6)
++++ b/SafeHaven/Haven/views.py	(date 1651025438624)
+@@ -33,14 +33,13 @@
+     }
+     #if a new location is being made from volunteer index
+     if request.method == 'POST':
+-        if request.POST.get('address') and request.POST.get('spaces') and request.POST.get('username'):
++        if request.POST.get('address') and request.POST.get('spaces'):
+             address = request.POST["address"]
+             pets = request.POST["pets"]
+             spaces = request.POST["spaces"]
+-            username = request.POST["username"]
+ 
+             #create the new location
+-            location = EvacLocation.create(address, pets, spaces, username)
++            location = EvacLocation.create(address, pets, spaces)
+             location.save()
+ 
+     #render the listings page with the info dict passed in
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"Python 3.9 (CMSC447-Project)\" project-jdk-type=\"Python SDK\" />\r\n  <component name=\"PyCharmProfessionalAdvertiser\">\r\n    <option name=\"shown\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 6643bcecf86b403410e5a28119ae13b16eb8a3d6)
++++ b/.idea/misc.xml	(date 1650338715568)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (CMSC447-Project)" project-jdk-type="Python SDK" />
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 (CMSC447-Project) (5)" project-jdk-type="Python SDK" />
+   <component name="PyCharmProfessionalAdvertiser">
+     <option name="shown" value="true" />
+   </component>
+Index: SafeHaven/Haven/models.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import datetime\r\n\r\nfrom django.db import models\r\nfrom django.utils import timezone\r\nfrom django.contrib import auth\r\nfrom django.forms.models import model_to_dict\r\n\r\n# Create your models here.\r\n\r\n\r\nclass EvacLocation(models.Model):\r\n    #Each evac location has these variables\r\n    address = models.CharField(max_length=200)\r\n    # pets = models.BooleanField(default=False)\r\n    pets = models.IntegerField(default=0) #converts to bool in views.py\r\n    spaces = models.IntegerField(default=1)\r\n    username = models.CharField(max_length=200)\r\n    reservations = models.IntegerField(default=0)\r\n    pub_date = models.DateTimeField('date published')\r\n\r\n    def __str__(self):\r\n        return self.address\r\n\r\n    def allows_pets(self):\r\n        return self.pets\r\n\r\n    def get_spaces(self):\r\n        return self.spaces\r\n\r\n    def was_published_recently(self):\r\n        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)\r\n\r\n    def is_full(self):\r\n        return self.spaces <= self.reservations\r\n\r\n    @classmethod\r\n    def create(cls, address, pets, spaces, username):\r\n        location = EvacLocation(address=address, pets=pets,\r\n                                spaces=spaces, username=username,reservations=0,\r\n                                pub_date=timezone.now())\r\n        return location\r\n\r\n    @classmethod\r\n    def delete(cls):\r\n        cls.delete()\r\n\r\n\r\nclass Volunteer(models.Model):\r\n    name = models.CharField(max_length=80)\r\n\r\n    def __str__(self):\r\n        return self.name\r\n\r\n    def dict(self):\r\n        return model_to_dict(self)\r\n\r\n\r\nclass Evacuee(models.Model):\r\n    name = models.CharField(max_length=80)\r\n    pets = models.IntegerField(default=0)\r\n    spaces_needed = models.IntegerField(default=1)\r\n    EvacLocation = models.ForeignKey(EvacLocation, on_delete=models.SET_NULL, null=True)\r\n\r\n    def __str__(self):\r\n        return self.name\r\n\r\n    def dict(self):\r\n        return model_to_dict(self)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SafeHaven/Haven/models.py b/SafeHaven/Haven/models.py
+--- a/SafeHaven/Haven/models.py	(revision 6643bcecf86b403410e5a28119ae13b16eb8a3d6)
++++ b/SafeHaven/Haven/models.py	(date 1651025438613)
+@@ -14,7 +14,6 @@
+     # pets = models.BooleanField(default=False)
+     pets = models.IntegerField(default=0) #converts to bool in views.py
+     spaces = models.IntegerField(default=1)
+-    username = models.CharField(max_length=200)
+     reservations = models.IntegerField(default=0)
+     pub_date = models.DateTimeField('date published')
+ 
+@@ -34,9 +33,9 @@
+         return self.spaces <= self.reservations
+ 
+     @classmethod
+-    def create(cls, address, pets, spaces, username):
++    def create(cls, address, pets, spaces):
+         location = EvacLocation(address=address, pets=pets,
+-                                spaces=spaces, username=username,reservations=0,
++                                spaces=spaces, reservations=0,
+                                 pub_date=timezone.now())
+         return location
+ 

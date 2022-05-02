@@ -8,7 +8,7 @@ from Haven.models import Signup
 
 
 def index(request):
-    template = loader.get_template("base.html")
+    template = loader.get_template("homepage.html")
     return HttpResponse(template.render({}, request))
     # return HttpResponse("Hello, world. You're at the Haven index.")
 
