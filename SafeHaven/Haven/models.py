@@ -15,7 +15,7 @@ class EvacLocation(models.Model):
     # pets = models.BooleanField(default=False)
     pets = models.CharField(max_length=50)  # converts to bool in views.py
     spaces = models.IntegerField(default=1)
-    username = models.CharField(max_length=200)
+    username = models.CharField(max_length=200, default='NONE')
     reservations = models.IntegerField(default=0)
     pub_date = models.DateTimeField('date published')
 
