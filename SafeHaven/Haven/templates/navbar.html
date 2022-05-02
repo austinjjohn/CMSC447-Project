@@ -1,16 +1,52 @@
+<!--<div>-->
+<!--    <img class="image"-->
+<!--         src="https://cdn.discordapp.com/attachments/946404952627093565/964183117151731732/safe-haven-color.png"-->
+<!--         width="50"-->
+<!--         height="50"/>-->
+<!--    {% url 'index' as index_url %}-->
+<!--    <span>{% if request.path == index_url %}Home{% else %}<a href="{% url 'index' %}">Home</a>{% endif %}</span>-->
+<!--    {% url 'login' as login_url %}-->
+<!--    <span>{% if request.path == signup_url %}signup{% else %}<a href="{% url 'signup' %}">Sign Up</a>{% endif %}</span>-->
+<!--    {% url 'listings' as listing_url %}-->
+<!--    <span>{% if request.path == login_url %}Login{% else %}<a href="{% url 'login' %}">Login</a>{% endif %}</span>-->
+<!--    {% url 'listings' as listing_url %}-->
+<!--    <span>{% if request.path == listing_url %}Listings{% else %}<a href="{% url 'listings' %}">Listings</a>{% endif %}</span>-->
+<!--    {% url 'volunteer' as volunteer_url %}-->
+<!--    <span>{% if request.path == volunteer_url %}Volunteer{% else %}<a href="{% url 'volunteer' %}">Volunteer</a>{% endif %}</span>-->
+<!--    {% url 'evacuee' as evacuee_url %}-->
+<!--    <span>{% if request.path == evacuee_url %}Evacuee{% else %}<a href="{% url 'evacuee' %}">Evacuee</a>{% endif %}</span>-->
+
+<!--      <nav class="site-header sticky-top py-1">-->
+<!--      <div class="container d-flex flex-column flex-md-row justify-content-between">-->
+<!--        <a class="py-2 d-none d-md-inline-block" href="{% url 'index' %}">Home</a>-->
+<!--        <a class="py-2 d-none d-md-inline-block" href="{% url 'signup' %}">Sign Up</a>-->
+<!--        <a class="py-2 d-none d-md-inline-block" href="{% url 'login' %}">Login</a>-->
+<!--        <a class="py-2 d-none d-md-inline-block" href="{% url 'listings' %}">Listings</a>-->
+<!--        <a class="py-2 d-none d-md-inline-block" href="{% url 'volunteer' %}">Volunteer</a>-->
+<!--        <a class="py-2 d-none d-md-inline-block" href="{% url 'evacuee' %}">Evacuee</a>-->
+<!--      </div>-->
+<!--    </nav>-->
+
+
+
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand"></h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link active" href="{% url 'index' %}">Home</a>
+          <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+          <a class="nav-link" href="{% url 'listings' %}">Listings</a>
+          <a class="nav-link" href="{% url 'volunteer' %}">Volunteer</a>
+          <a class="nav-link" href="{% url 'evacuee' %}">Evacuee</a>
+        </nav>
+      </div>
+    </header>
+  </div>
 <div>
-    <img class="image"
-         src="https://cdn.discordapp.com/attachments/946404952627093565/964183117151731732/safe-haven-color.png"
-         width="50"
-         height="50"/>
     {% url 'index' as index_url %}
     <span>{% if request.path == index_url %}Home{% else %}<a href="{% url 'index' %}">Home</a>{% endif %}</span>
     {% url 'login' as login_url %}
     <span>{% if request.path == login_url %}Login{% else %}<a href="{% url 'login' %}">Login</a>{% endif %}</span>
-    {% url 'listings' as listing_url %}
-    <span>{% if request.path == listing_url %}Listings{% else %}<a href="{% url 'listings' %}">Listings</a>{% endif %}</span>
-    {% url 'volunteer' as volunteer_url %}
-    <span>{% if request.path == volunteer_url %}Volunteer{% else %}<a href="{% url 'volunteer' %}">Volunteer</a>{% endif %}</span>
-    {% url 'evacuee' as evacuee_url %}
-    <span>{% if request.path == evacuee_url %}Evacuee{% else %}<a href="{% url 'evacuee' %}">Evacuee</a>{% endif %}</span>
 </div>
