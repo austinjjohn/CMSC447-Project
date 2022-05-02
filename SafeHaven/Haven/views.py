@@ -84,28 +84,20 @@ def evacuee(request):
     template = loader.get_template("evac_profile_page.html")
     return HttpResponse(template.render({}, request))
 
-# def createListing(request):
-#     if request.method == 'POST':
-#         if request.POST.get('address') and request.POST.get('spaces'):
-#             address = request.POST["address"]
-#             pets = request.POST["pets"]
-#             spaces = request.POST["spaces"]
-#             dict = {
-#                 'address': address,
-#                 'pets': pets,
-#                 'spaces': spaces
-#             }
-#             return render(request, 'templates/listings.html', dict)
-#
-#     else:
-#         return render(request, 'templates/listings.html', dict)
-        # return redirect("/listings") #UNCOMMENT WHEN WE HAVE A LISTINGS PAGE TO CONTINUE TO
-    else:
-        form = RegisterationForm()
-    return render(response, "login.html", {"form": form})
+def createListing(request):
+    if request.method == 'POST':
+        if request.POST.get('address') and request.POST.get('spaces'):
+            address = request.POST["address"]
+            pets = request.POST["pets"]
+            spaces = request.POST["spaces"]
+            dict = {
+                'address': address,
+                'pets': pets,
+                'spaces': spaces
+            }
+    return render(request, 'templates/listings.html', dict)
 
-# {"form": form}
-# def login(request):
-#     template = loader.get_template("login.html")
-#     return HttpResponse(template.render({}, request))
+def map(request):
+    template = loader.get_template("map.html")
+    return HttpResponse(template.render({}, request))
 
