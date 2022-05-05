@@ -18,6 +18,12 @@ class EvacLocation(models.Model):
     username = models.CharField(max_length=200, default='NONE')
     reservations = models.IntegerField(default=0)
     pub_date = models.DateTimeField('date published')
+    dogAllowed = models.BooleanField(default=False)
+    catAllowed = models.BooleanField(default=False)
+    fishAllowed = models.BooleanField(default=False)
+    birdAllowed = models.BooleanField(default=False)
+    babyAllowed = models.BooleanField(default=False)
+    kidAllowed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.address
@@ -33,12 +39,20 @@ class EvacLocation(models.Model):
 
     def is_full(self):
         return self.spaces <= self.reservations
+    
+    # @classmethod
+    # def create(cls, address, pets, spaces, username):
+    #     location = EvacLocation(address=address, pets=pets,
+    #                             spaces=spaces, username=username, reservations=0,
+    #                             pub_date=timezone.now())
+    #     return location
 
     @classmethod
-    def create(cls, address, pets, spaces, username):
+    def create(cls, address, pets, spaces, username, dog, cat, fish, bird, baby, kid):
         location = EvacLocation(address=address, pets=pets,
                                 spaces=spaces, username=username, reservations=0,
-                                pub_date=timezone.now())
+                                pub_date=timezone.now(), dogAllowed = dog, catAllowed = cat,
+                                fishAllowed = fish, birdAllowed = bird, babyAllowed = baby, kidAllowed = kid)
         return location
 
     @classmethod
