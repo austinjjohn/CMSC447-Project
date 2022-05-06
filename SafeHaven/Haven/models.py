@@ -34,6 +34,10 @@ class EvacLocation(models.Model):
     def is_full(self):
         return self.spaces <= self.reservations
 
+    def decrement_spaces(self):
+        self.spaces = self.spaces - 1
+        return self.spaces
+
     @classmethod
     def create(cls, address, pets, spaces, username):
         location = EvacLocation(address=address, pets=pets,
