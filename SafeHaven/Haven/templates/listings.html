@@ -7,14 +7,22 @@
 {% for listing in list_data %}
     <div>
         <br>
-        Address is {{ listing.address }}
-        Pets :{{ listing.pets }}
-        Spaces available :{{ listing.spaces }}
-        Account hosting Safe Space:{{ listing.username }}
-        Publication date :{{ listing.pub_date }}
+        <div>Address is :{{ listing.address }}</div>
+        <div>Pets :{{ listing.pets }}</div>
+        <div>Spaces available :{{ listing.spaces }}</div>
+        <div>Account hosting Safe Space:{{ listing.username }}</div>
+        <div>Publication date :{{ listing.pub_date }}</div>
+<!--        <form action="listings" method="POST" style='margin: 0; padding: 0;'>-->
+<!--            {% csrf_token %}-->
+        <button onclick="myFunction(this, listing)">Reserve</button>
+<!--        </form>-->
         <!-- WILL HAVE evac button bring to this page-->
         <!-- WILL HAVE reserve listing pull from users database-->
     </div>
 {% endfor %}
-
+<script>
+function myFunction(element, listingObj) {
+  element.decrement_spaces();
+}
+</script>
 {% endblock %}
