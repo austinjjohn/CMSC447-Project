@@ -30,17 +30,24 @@ def signup(response):
 
 
 def login_user(request):
-    if request.method == "POST":
-        if request.POST.get('email') and request.POST.get('password'):
+    print("Funbction")
+    if request.method == "GET":
+        print("first if")
+        if request.GET.get('email') and request.GET.get('password'):
+            print("second if")
             email = request.POST["email"]
+            # username = request.POST["username"]
             password = request.POST["password"]
             user = authenticate(request, email=email, password=password)
 
             if user is not None:
+                print("IF")
                 login(request, user)
                 return redirect('homepage.html')
+
             else:
-                messages.success(request, "Incorrect Email or Password. Try Again.")
+                print("Else")
+                messages.error(request, ("Incorrect Email or Password. Try Again."))
                 return redirect('login.html')
 
     #         logininfo = Login.create(firstname, lastname, username, email, password)
@@ -50,8 +57,8 @@ def login_user(request):
     # info = {
     #     "list_data": data
     # }
-    else:
-        return render(request, 'login.html')
+        else:
+            return render(request, 'login.html')
 
     # if response.method == "POST":
     #     form = RegisterationForm(response.POST)
