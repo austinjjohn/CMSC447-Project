@@ -13,10 +13,19 @@
     <title>{% block title %}SafeHaven{% endblock %}</title>
 </head>
 <body>
-{% include 'navbar.html' %}
-<h1 class="logotype">SafeHaven</h1>
 
-</div>
+{% include 'navbar.html' %}
+<!--<h1 class="logotype">SafeHaven</h1>-->
+<!--</div>-->
+<!--<br/>-->
+
+<!--<div class="container">-->
+<!--    {% if messages %}-->
+<!--        {% for message in messages %}-->
+<!--            {{ message }}-->
+<!--        {% endfor %}-->
+<!--    {% endif %}-->
+<!--</div>-->
 
 <main>
     {% block content %}
