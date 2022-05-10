@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import RegisterationForm
 from Haven.models import EvacLocation
 from Haven.models import Login
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -30,25 +31,29 @@ def signup(response):
 
 
 def login_user(request):
-    print("Funbction")
-    if request.method == "GET":
+    print("Function")
+    if request.method == "POST":
         print("first if")
-        if request.GET.get('email') and request.GET.get('password'):
-            print("second if")
-            email = request.POST["email"]
-            # username = request.POST["username"]
-            password = request.POST["password"]
-            user = authenticate(request, email=email, password=password)
+        # if request.POST.get('email') and request.POST.get('password'):
+        print("second if")
+        # email = request.POST["email"]
+        username = request.POST['username']
+        password = request.POST['password']
+        print(username, password)
+        user = User.objects.get(username__exact=username)
+        print(user)
+        # user = authenticate(request, username=username, password=password)
+        print("user", user)
 
-            if user is not None:
-                print("IF")
-                login(request, user)
-                return redirect('homepage.html')
+        if user is not None:
+            print("IF")
+            login(request, user)
+            return redirect('homepage')
 
-            else:
-                print("Else")
-                messages.error(request, ("Incorrect Email or Password. Try Again."))
-                return redirect('login.html')
+        else:
+            print("Else")
+            messages.success(request, ("Incorrect Email or Password. Try Again."))
+            return redirect('login')
 
     #         logininfo = Login.create(firstname, lastname, username, email, password)
     #         logininfo.save()
@@ -57,8 +62,8 @@ def login_user(request):
     # info = {
     #     "list_data": data
     # }
-        else:
-            return render(request, 'login.html')
+    else:
+        return render(request, 'login.html', {})
 
     # if response.method == "POST":
     #     form = RegisterationForm(response.POST)
@@ -98,6 +103,16 @@ def volunteer(request):
     return HttpResponse(template.render({}, request))
 
 
+def map(request):
+    template = loader.get_template("map.html")
+    return HttpResponse(template.render({}, request))
+
+
+def homepage(request):
+    template = loader.get_template("homepage.html")
+    return HttpResponse(template.render({}, request))
+
+
 def evacuee(request):
     template = loader.get_template("evac_profile_page.html")
     return HttpResponse(template.render({}, request))
@@ -115,8 +130,3 @@ def createListing(request):
                 'spaces': spaces
             }
     return render(request, 'templates/listings.html', dict)
-
-
-def map(request):
-    template = loader.get_template("map.html")
-    return HttpResponse(template.render({}, request))
