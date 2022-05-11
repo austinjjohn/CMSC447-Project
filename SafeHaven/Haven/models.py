@@ -13,7 +13,7 @@ from django import forms
 class EvacLocation(models.Model):
     address = models.CharField(max_length=200)
     # pets = models.BooleanField(default=False)
-    pets = models.CharField(max_length=50)  # converts to bool in views.py
+    pets = models.CharField(max_length=50, default='NONE')  # converts to bool in views.py
     spaces = models.IntegerField(default=1)
     username = models.CharField(max_length=200, default='NONE')
     reservations = models.IntegerField(default=0)
