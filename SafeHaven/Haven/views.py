@@ -23,56 +23,32 @@ def signup(response):
         form = RegisterationForm(response.POST)
         if form.is_valid():
             form.save()
+            return redirect("/listings")  # UNCOMMENT WHEN WE HAVE A LISTINGS PAGE TO CONTINUE TO
 
-        return redirect("/listings")  # UNCOMMENT WHEN WE HAVE A LISTINGS PAGE TO CONTINUE TO
     else:
         form = RegisterationForm()
     return render(response, "signup.html", {"form": form})
 
 
 def login_user(request):
-    print("Function")
     if request.method == "POST":
-        print("first if")
-        # if request.POST.get('email') and request.POST.get('password'):
-        print("second if")
         # email = request.POST["email"]
         username = request.POST['username']
         password = request.POST['password']
         print(username, password)
         user = User.objects.get(username__exact=username)
-        print(user)
         # user = authenticate(request, username=username, password=password)
-        print("user", user)
 
         if user is not None:
-            print("IF")
             login(request, user)
             return redirect('homepage')
 
         else:
-            print("Else")
-            messages.success(request, ("Incorrect Email or Password. Try Again."))
+            messages.success(request, "Incorrect Email or Password. Try Again.")
             return redirect('login')
 
-    #         logininfo = Login.create(firstname, lastname, username, email, password)
-    #         logininfo.save()
-    #
-    # data = Login.objects.all()
-    # info = {
-    #     "list_data": data
-    # }
     else:
         return render(request, 'login.html', {})
-
-    # if response.method == "POST":
-    #     form = RegisterationForm(response.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #     return redirect("/listings") #UNCOMMENT WHEN WE HAVE A LISTINGS PAGE TO CONTINUE TO
-    # else:
-    #     form = RegisterationForm()
-    # return render(response, "signup.html", {"form": form})
 
 
 def listings(request):
