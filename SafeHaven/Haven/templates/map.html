@@ -1,7 +1,22 @@
-{% extends 'base.html' %}
-
-{% block title %}Map{% endblock %}
-
-{% block content %}
-<h2>Map</h2>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+<h1>Maps</h1>
+<div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoiam1pMSIsImEiOiJjbDJndjV0b2kwN245M2tteHN3NTcwaXNpIn0.pOCxELPUcT3JC9rXzhL07Q';
+const map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/satellite-streets-v11',
+center: [-76.71095954472092,39.25386386415346],
+zoom: 14
+});
+</script>
+</body>
+</html>
