@@ -16,7 +16,6 @@ from django.contrib.auth.models import User
 def index(request):
     template = loader.get_template("homepage.html")
     return HttpResponse(template.render({}, request))
-    # return HttpResponse("Hello, world. You're at the Haven index.")
 
 
 def logout_user(request):
@@ -30,10 +29,9 @@ def signup(response):
         form = RegisterationForm(response.POST)
         if form.is_valid():
             form.save()
-            # user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
-            # messages.info(request, "Thanks for registering.")
-            # login_user(response, user)
-            return redirect("/listings")  # UNCOMMENT WHEN WE HAVE A LISTINGS PAGE TO CONTINUE TO
+            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
+            login(response, user)
+            return redirect("home")  # UNCOMMENT WHEN WE HAVE A LISTINGS PAGE TO CONTINUE TO
 
     else:
         form = RegisterationForm()
@@ -42,19 +40,17 @@ def signup(response):
 
 def login_user(request):
     if request.method == "POST":
-        # email = request.POST["email"]
         username = request.POST['username']
         password = request.POST['password']
-        # user = User.objects.get(username__exact=username)
         user = authenticate(username=username, password=password)
 
         if user is not None:
             login(request, user)
-            # info = {'user_name': user.username, 'user_email': user.email}
+            messages.success(request, "Successfully Logged In.")
             return redirect('homepage')
 
         else:
-            messages.success(request, "Incorrect Email or Password. Try Again.")
+            messages.error(request, "Incorrect Email or Password. Try Again.")
             return redirect('login')
 
     else:
@@ -95,10 +91,6 @@ def map(request):
 
 
 def homepage(request):
-    # if User is not None:
-    #     template = loader.get_template("homepage.html")
-    #     return render(request, 'homepage', info)
-    # else:
     template = loader.get_template("homepage.html")
     return HttpResponse(template.render({}, request))
 
