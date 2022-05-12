@@ -31,7 +31,7 @@ class UserSignup(StaticLiveServerTestCase):
 
     def test_user_object_saved(self):
         test = User(username='testuser',
-                    password='Thisisasecrettestpassowrd',
+                    password='Thisisasecrettestpassword',
                     email='testemail@gmail.com',
                     first_name='firstname',
                     last_name='lastname')
@@ -47,8 +47,8 @@ class UserSignup(StaticLiveServerTestCase):
         self.browser.find_element(By.NAME, 'last_name').send_keys('lastname2')
         self.browser.find_element(By.NAME, 'username').send_keys('testuser2')
         self.browser.find_element(By.NAME, 'email').send_keys('testemail2@gmail.com')
-        self.browser.find_element(By.NAME, 'password1').send_keys('Thisisasecrettestpassowrd2')
-        self.browser.find_element(By.NAME, 'password2').send_keys('Thisisasecrettestpassowrd2')
+        self.browser.find_element(By.NAME, 'password1').send_keys('Thisisasecrettestpassword2')
+        self.browser.find_element(By.NAME, 'password2').send_keys('Thisisasecrettestpassword2')
         self.browser.find_element(By.CLASS_NAME, 'btn').click()
 
         q2 = User.objects.values()
