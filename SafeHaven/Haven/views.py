@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.template import loader
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+import django.contrib.contenttypes
 from .forms import RegisterationForm
 from Haven.models import EvacLocation
 from Haven.models import Login
@@ -18,11 +19,20 @@ def index(request):
     # return HttpResponse("Hello, world. You're at the Haven index.")
 
 
+def logout_user(request):
+    logout(request)
+    template = loader.get_template("homepage.html")
+    return HttpResponse(template.render({}, request))
+
+
 def signup(response):
     if response.method == "POST":
         form = RegisterationForm(response.POST)
         if form.is_valid():
             form.save()
+            # user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
+            # messages.info(request, "Thanks for registering.")
+            # login_user(response, user)
             return redirect("/listings")  # UNCOMMENT WHEN WE HAVE A LISTINGS PAGE TO CONTINUE TO
 
     else:
@@ -35,12 +45,12 @@ def login_user(request):
         # email = request.POST["email"]
         username = request.POST['username']
         password = request.POST['password']
-        print(username, password)
-        user = User.objects.get(username__exact=username)
-        # user = authenticate(request, username=username, password=password)
+        # user = User.objects.get(username__exact=username)
+        user = authenticate(username=username, password=password)
 
         if user is not None:
             login(request, user)
+            # info = {'user_name': user.username, 'user_email': user.email}
             return redirect('homepage')
 
         else:
@@ -85,6 +95,10 @@ def map(request):
 
 
 def homepage(request):
+    # if User is not None:
+    #     template = loader.get_template("homepage.html")
+    #     return render(request, 'homepage', info)
+    # else:
     template = loader.get_template("homepage.html")
     return HttpResponse(template.render({}, request))
 

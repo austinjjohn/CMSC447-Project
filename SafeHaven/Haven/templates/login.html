@@ -12,7 +12,6 @@
     <title>SafeHaven Website</title>
 </head>
 <body class="bg-light">
-<!--{% include 'navbar.html' %}-->
 <div class="container">
     <div class="py-5 text-center">
         <h1>SafeHaven</h1>
@@ -61,6 +60,10 @@
         <br>
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
     </form>
+    <br>
+    <span>
+        Dont have an account? <a href="{% url 'signup' %}">Register Here</a>
+    </span>
 
 </div>
 
