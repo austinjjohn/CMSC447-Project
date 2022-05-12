@@ -13,7 +13,8 @@ Navigate to the SafeHaven directory containing the `manage.py` file and type in 
 ```bash
 py manage.py makemigrations
 py manage.py migrate
-
+```
+```bash
 py manage.py runserver
 ``` 
 this will give you a link with an IP address pointing to the local server that you can click to launch your webpage.
