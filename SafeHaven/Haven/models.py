@@ -19,6 +19,12 @@ class EvacLocation(models.Model):
     reservations = models.IntegerField(default=0)
     pub_date = models.DateTimeField('date published')
     evac_reserved = models.TextField(default='NONE')
+    dogAllowed = models.BooleanField(default=False)
+    catAllowed = models.BooleanField(default=False)
+    fishAllowed = models.BooleanField(default=False)
+    birdAllowed = models.BooleanField(default=False)
+    babyAllowed = models.BooleanField(default=False)
+    kidAllowed = models.BooleanField(default=False)
 
     def get_address(self):
         return self.address
@@ -52,10 +58,13 @@ class EvacLocation(models.Model):
         return self.spaces
 
     @classmethod
-    def create(cls, address, pets, spaces, username):
+    def create(cls, address, pets, spaces, username, dog, cat, fish, bird, baby, kid):
         location = EvacLocation(address=address, pets=pets,
                                 spaces=spaces, username=username, reservations=0,
-                                pub_date=timezone.now(), evac_reserved = 'NONE')
+                                pub_date=timezone.now(), evac_reserved = 'NONE',
+                                dogAllowed = dog, catAllowed = cat,
+                                fishAllowed = fish, birdAllowed = bird,
+                                babyAllowed = baby, kidAllowed = kid)
         return location
 
     @classmethod

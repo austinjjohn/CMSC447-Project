@@ -62,14 +62,56 @@ def listings(request):
     # if a new location is being made from volunteer index
     if request.method == 'POST':
         if request.POST.get('address') and request.POST.get('spaces') and request.POST.get('username'):
+            # grab data from post request to populate evaclocation object
             address = request.POST["address"]
             pets = request.POST["pets"]
             spaces = request.POST["spaces"]
             username = request.POST["username"]
 
-            # create the new location
-            location = EvacLocation.create(address, pets, spaces, username)
-            location.save()
+            dog = request.POST['dog']
+            cat = request.POST['cat']
+            fish = request.POST['fish']
+            bird = request.POST['bird']
+            baby = request.POST['baby']
+            kid = request.POST['kid']
+
+            # check if current listing data will be a duplicate
+            isDuplicate = False
+            for object in data:
+                if object.get_address() == address:
+                    isDuplicate = True
+
+            # only create evac location object & save to database if curr listing DNE in database already
+            if not isDuplicate:
+                # convert checkbox values to booleans
+                if dog == 'on':
+                    dog = True
+                else:
+                    dog = False
+                if cat == 'on':
+                    cat = True
+                else:
+                    cat = False
+                if fish == 'on':
+                    fish = True
+                else:
+                    fish = False
+                if bird == 'on':
+                    bird = True
+                else:
+                    cbirdat = False
+                if baby == 'on':
+                    baby = True
+                else:
+                    baby = False
+                if kid == 'on':
+                    kid = True
+                else:
+                    kid = False
+
+                # create the new location and save to database
+                location = EvacLocation.create(address, pets, spaces, username, dog, cat, fish, bird, baby, kid)
+                location.save()
 
     # render the listings page with the info dict passed in
     return render(request, 'listings.html', info)
