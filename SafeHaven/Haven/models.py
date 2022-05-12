@@ -103,7 +103,7 @@ class EvacLocation(models.Model):
         cls.delete()
 
 
-class Signup(models.Model):
+class Login(models.Model):
     firstname = models.CharField(max_length=80)
     lastname = models.CharField(max_length=80)
     username = models.CharField(max_length=80)
@@ -127,8 +127,8 @@ class Signup(models.Model):
 
     @classmethod
     def create(cls, firstname, lastname, username, email, password):
-        signup = Signup(firstname=firstname, lastname=lastname, username=username, email=email, password=password)
-        return signup
+        login = Login(firstname=firstname, lastname=lastname, username=username, email=email, password=password)
+        return login
 
     @classmethod
     def delete(cls):
