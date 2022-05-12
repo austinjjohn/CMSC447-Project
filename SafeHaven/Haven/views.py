@@ -31,7 +31,7 @@ def signup(response):
             form.save()
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
             login(response, user)
-            return redirect("home")  # UNCOMMENT WHEN WE HAVE A LISTINGS PAGE TO CONTINUE TO
+            return redirect("homepage")  # UNCOMMENT WHEN WE HAVE A LISTINGS PAGE TO CONTINUE TO
 
     else:
         form = RegisterationForm()
@@ -73,12 +73,36 @@ def listings(request):
             spaces = request.POST["spaces"]
             username = request.POST["username"]
 
-            dog = request.POST['dog']
-            cat = request.POST['cat']
-            fish = request.POST['fish']
-            bird = request.POST['bird']
-            baby = request.POST['baby']
-            kid = request.POST['kid']
+            # dog = request.POST['dog']
+            # cat = request.POST['cat']
+            # fish = request.POST['fish']
+            # bird = request.POST['bird']
+            # baby = request.POST['baby']
+            # kid = request.POST['kid']
+            if ("dog" in request.POST.keys()):
+                dog = request.POST["dog"]
+            else:
+                dog = False
+            if ("cat" in request.POST.keys()):
+                cat = request.POST["cat"]
+            else:
+                cat = False
+            if ("fish" in request.POST.keys()):
+                fish = request.POST["fish"]
+            else:
+                fish = False
+            if ("bird" in request.POST.keys()):
+                bird = request.POST["bird"]
+            else:
+                bird = False
+            if ("baby" in request.POST.keys()):
+                baby = request.POST["baby"]
+            else:
+                baby = False
+            if ("kid" in request.POST.keys()):
+                kid = request.POST["kid"]
+            else:
+                kid = False
 
             # check if current listing data will be a duplicate
             isDuplicate = False
