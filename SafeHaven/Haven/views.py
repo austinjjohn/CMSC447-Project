@@ -77,10 +77,13 @@ def listings(request):
 def reserve(request, listing):
     chosenListing = listing
     data = EvacLocation.objects.all()
+    reserving_username = request.POST.get('username')
     for location in data:
-        if location == chosenListing:
-            location.decrement_spaces()
-            location.save()
+        if location.areEqual(chosenListing):
+            if location.notDuplicateEvacuee(reserving_username):
+                location.decrement_spaces(chosenListing.get_spaces())
+                location.append_evac_reserved(reserving_username)
+                location.save()
 
     return render(request, 'templates/listings.html', dict)
 
